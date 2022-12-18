@@ -1,14 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 
 function NavBar() {
+  const { logoutAction } = useContext(AppContext);
+  const navigation = useNavigate();
+
+  // Uso de replace del useNavigate para inhabilitar el boton volver del navegador.
+  const logOut = () => {
+    logoutAction();
+    navigation("/login", { replace: true });
+  };
+
   return (
-    // <div>NavBar</div>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+        <span className="navbar-brand">
+          Technical Test
+        </span>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,23 +31,20 @@ function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav ms-auto">
-            {/* <li className="nav-item">
-              <Link to="/" className="nav-link active" aria-current="page">
-                Home
-              </Link>
-            </li> */}
             <li className="nav-item">
-              <Link to="/employees" className="nav-link">
+              <NavLink to="/employees" className="nav-link">
                 Employees
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/upload" className="nav-link">
+              <NavLink to="/upload" className="nav-link">
                 Upload
-              </Link>
+              </NavLink>
             </li>
           </ul>
-          <Link to="/" className="btn btn-primary ms-3">Cerrar Sesion</Link>
+          <button className="btn btn-primary ms-lg-3" onClick={logOut}>
+            Cerrar sesion
+          </button>
         </div>
       </div>
     </nav>
