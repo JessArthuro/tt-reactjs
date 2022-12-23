@@ -37,6 +37,7 @@ function Login() {
         className="col-12 col-md-10 col-lg-8 mx-auto p-4 border shadow-sm"
         onSubmit={handleSubmit}
         ref={form}
+        autoComplete="off"
       >
         <h2>Inicio de Sesión</h2>
         <div className="mb-3">
@@ -60,6 +61,7 @@ function Login() {
             type="password"
             name="password"
             className="form-control"
+            autoComplete="off"
             id="InputPassword"
             onCopy={unableToCopy}
             onPaste={unableToPaste}

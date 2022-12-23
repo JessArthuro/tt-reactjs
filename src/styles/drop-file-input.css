@@ -1,0 +1,60 @@
+.drop_file_input {
+  border: 2px dashed #e3e4e9;
+  border-radius: 0.5rem;
+  color: #838993;
+  transition: all 0.3s ease;
+}
+
+.dragover {
+  border: 2px dashed #838993;
+  background-color: #f8f9fa;
+}
+
+.drop_file_input img {
+  height: 3.5rem;
+}
+
+.drop_file_input p {
+  font-size: 0.9rem;
+  color: #a7acb2;
+}
+
+.preview_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+  gap: 0.5rem;
+}
+
+.preview_item {
+  height: 8rem;
+  position: relative;
+}
+
+.preview_item:hover img {
+  filter: brightness(0.5);
+}
+
+.preview_item:hover .preview_delete {
+  opacity: 1;
+}
+
+.preview_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.preview_delete {
+  position: absolute;
+  top: 0.25rem;
+  right: 0;
+  background: none;
+  border: 0;
+  outline: 0;
+  font-size: 1.35rem;
+  color: #fff;
+  display: flex;
+  opacity: 0;
+  transition: filter 0.3s ease;
+}
