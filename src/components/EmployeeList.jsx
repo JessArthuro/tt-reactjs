@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import Searcher from "./Searcher";
 
@@ -42,7 +43,7 @@ function EmployeeList() {
             <span className="fw-semibold">{totalEmployees}</span>
           </p>
         </div>
-        <button className="btn btn-primary">Añadir</button>
+        <Link to="new" className="btn btn-primary">Añadir</Link>
       </div>
 
       <Searcher
