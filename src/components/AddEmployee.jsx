@@ -61,6 +61,7 @@ const AddEmployee = () => {
             className="form-control"
             id="inputName"
             name="name"
+            placeholder="Ingresa el nombre..."
             required
           />
         </div>
@@ -73,6 +74,7 @@ const AddEmployee = () => {
             className="form-control"
             id="inputLastName"
             name="last_name"
+            placeholder="Ingresa los apellidos..."
             required
           />
         </div>
@@ -84,7 +86,7 @@ const AddEmployee = () => {
             dateFormat="yyyy/MM/dd"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
-            // placeholderText="Selecciona la fecha de nacimiento"
+            placeholderText="Selecciona la fecha..."
             showMonthDropdown
             showYearDropdown
             dropdownMode="select"
@@ -97,11 +99,11 @@ const AddEmployee = () => {
         </div>
 
         <div className="col-12 my-3">
-          <Link className="btn btn-secondary me-2" to="/employees">
-            Cancel
+          <Link className="btn btn-danger me-2" to="/employees">
+            Cancelar
           </Link>
           <button type="submit" className="btn btn-primary">
-            Add
+            Añadir
           </button>
         </div>
       </form>

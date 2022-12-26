@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 import { MdOutlineClose } from "react-icons/md";
@@ -75,6 +75,25 @@ const DropFileInput = (props) => {
     props.onFileChange(updatedList);
   };
 
+  const [images, setImages] = useState(null);
+  const localStorageImages = localStorage.getItem("IMAGES");
+
+  useEffect(() => {
+    if (!localStorageImages) {
+      const getImages = localStorage.setItem("IMAGES", JSON.stringify([]));
+      setImages(getImages);
+    } else {
+      setImages(JSON.parse(localStorageImages));
+    }
+  }, []);
+
+  const saveStorage = (fileList) => {
+    const newImg = fileList.concat(...images);
+    localStorage.setItem("IMAGES", JSON.stringify(newImg));
+    setImages(newImg);
+    setFileList([]);
+  };
+
   return (
     <>
       <div
@@ -106,7 +125,7 @@ const DropFileInput = (props) => {
 
       {fileList.length > 0 && (
         <div className="drop_file_preview mb-5">
-          <h5 className="mb-3">Ready to save</h5>
+          <h5 className="mb-3">Archivos en cola</h5>
           <div className="preview_grid">
             {fileList.map((item, index) => (
               <div key={index} className="preview_item">
@@ -121,8 +140,25 @@ const DropFileInput = (props) => {
             ))}
           </div>
           <div className="d-flex justify-content-center mt-4">
-            <button className="btn btn-primary">Save</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => saveStorage(fileList)}
+            >
+              Save
+            </button>
           </div>
+        </div>
+      )}
+
+      {images?.length > 0 && (
+        <div className="stored_images">
+          {/* <h5>Imagenes en localStorage</h5> */}
+          {images.map((image, index) => (
+            <div key={index}>
+              {/* <p>{image.name}</p> */}
+              <img className="image_item" src={image.src} alt="" style={{height: "4rem"}} />
+            </div>
+          ))}
         </div>
       )}
     </>

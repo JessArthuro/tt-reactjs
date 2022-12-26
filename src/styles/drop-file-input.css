@@ -28,6 +28,11 @@
 .preview_item {
   height: 8rem;
   position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.preview_item:hover {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .preview_item:hover img {
