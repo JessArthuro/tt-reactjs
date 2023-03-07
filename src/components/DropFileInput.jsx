@@ -75,7 +75,7 @@ const DropFileInput = (props) => {
     props.onFileChange(updatedList);
   };
 
-  const [images, setImages] = useState(null);
+  const [images, setImages] = useState([]);
   const localStorageImages = localStorage.getItem("IMAGES");
 
   useEffect(() => {
@@ -152,7 +152,7 @@ const DropFileInput = (props) => {
 
       {images?.length > 0 && (
         <div className="stored_images">
-          {/* <h5>Imagenes en localStorage</h5> */}
+          <h5>Imagenes en localStorage</h5>
           {images.map((image, index) => (
             <div key={index}>
               {/* <p>{image.name}</p> */}
